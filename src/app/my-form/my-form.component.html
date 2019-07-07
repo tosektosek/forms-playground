@@ -1,0 +1,25 @@
+<h1>Form array demo</h1>
+<hr />
+<form *ngIf="demoForm" [formGroup]="demoForm">
+  <div
+    formArrayName="demoArray"
+    *ngFor="let arrayItem of demoArray.controls; let i = index"
+  >
+    <div [formGroupName]="i">
+      <input type="text" placeholder="name" formControlName="name" />
+      <input
+        [type]="arrayItem.value.type"
+        placeholder="type"
+        formControlName="type"
+      />
+    </div>
+    <br />
+  </div>
+  <h4>add new item</h4>
+  <form [formGroup]="inputForm">
+    <input type="text" placeholder="name" formControlName="name" />
+    <input type="text" placeholder="type" formControlName="type" />
+  </form>
+  <button [disabled]="inputForm.get('type').invalid" (click)="addItem()">Add form group to form array</button>
+  <p *ngIf="inputForm.get('type').invalid && inputForm.get('type').touched">xdddd error</p>
+</form>
