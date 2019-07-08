@@ -55,7 +55,14 @@ export class MyFormComponent implements OnInit {
     const validator: ValidatorFn = (control: FormControl) => {
       const type = control.value;
 
-      if (type === 'text' || type === 'number' || type === 'checkbox') {
+      if (
+        type === 'text' ||
+        type === 'number' ||
+        type === 'checkbox' ||
+        type === 'date' ||
+        type === 'file' ||
+        type === 'password'
+      ) {
         return null;
       } else {
         return { wrongType: true };

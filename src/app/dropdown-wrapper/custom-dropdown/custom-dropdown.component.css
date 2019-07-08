@@ -1,0 +1,28 @@
+.list {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2rem;
+}
+
+.list-item span {
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.select-data-container {
+  position: relative;
+}
+
+.show-list {
+  left: 0;
+  top: 32px;
+}
+
+.selected {
+  border: 1px solid red;
+}

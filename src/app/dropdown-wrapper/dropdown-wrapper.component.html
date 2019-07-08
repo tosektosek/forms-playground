@@ -1,0 +1,9 @@
+
+<pre> {{ form.value | json }}</pre>
+
+<form [formGroup]="form">
+  <app-custom-dropdown [products]="products" formControlName="product">
+  </app-custom-dropdown>
+</form>
+ <p class="error" *ngIf="form.get('product').errors">The product you have chosen is not an apple</p>
+
