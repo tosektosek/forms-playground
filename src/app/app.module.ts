@@ -7,18 +7,24 @@ import { MyFormComponent } from './my-form/my-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomDropdownComponent } from './dropdown-wrapper/custom-dropdown/custom-dropdown.component';
 import { DropdownWrapperComponent } from './dropdown-wrapper/dropdown-wrapper.component';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyFormComponent,
     CustomDropdownComponent,
-    DropdownWrapperComponent
+    DropdownWrapperComponent,
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]

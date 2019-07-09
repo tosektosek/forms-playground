@@ -3,11 +3,37 @@ import { Routes, RouterModule } from '@angular/router';
 import { MyFormComponent } from './my-form/my-form.component';
 import { CustomDropdownComponent } from './dropdown-wrapper/custom-dropdown/custom-dropdown.component';
 import { DropdownWrapperComponent } from './dropdown-wrapper/dropdown-wrapper.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
+import { RoleGuardService } from './auth/role-guard.service';
+import { DeactivationGuardService } from './deactivation-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
-  { path: 'forms', component: MyFormComponent },
-  { path: 'cva', component: DropdownWrapperComponent },
+  {
+    path: 'forms',
+    component: MyFormComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'cva',
+    component: DropdownWrapperComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canDeactivate: [DeactivationGuardService],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [RoleGuardService],
+    canActivateChild: [AuthGuardService],
+    data: { expectedRole: 'admin' },
+    children: [{ path: 'test', component: MyFormComponent }],
+  },
   { path: '**', redirectTo: '/forms' },
 ];
 

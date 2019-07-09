@@ -1,0 +1,9 @@
+<h1>THIS IS LOGIN</h1>
+
+<form novalidate [formGroup]="form">
+  <input type="text" formControlName="username" placeholder="username">
+  <input type="password" formControlName="password" placeholder="password">
+</form>
+<button (click)="login('user')">LOGIN AS USER</button>
+<button (click)="login('admin')">LOGIN AS ADMIN</button>
+<p class="p-error" *ngIf="error">{{error}}</p>
