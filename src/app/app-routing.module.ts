@@ -8,6 +8,8 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { AdminComponent } from './admin/admin.component';
 import { RoleGuardService } from './auth/role-guard.service';
 import { DeactivationGuardService } from './deactivation-guard.service';
+import { TestResolveComponent } from './test-resolve/test-resolve.component';
+import { MyResolverService } from './my-resolver.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
@@ -39,6 +41,11 @@ const routes: Routes = [
     loadChildren: './lazy-test/lazy-test.module#LazyTestModule',
     canLoad: [AuthGuardService]
     // canActivate: [AuthGuardService]
+  },
+  {
+    path: 'resolve',
+    component: TestResolveComponent,
+    resolve: { data: MyResolverService }
   },
   { path: '**', redirectTo: '/forms' },
 ];

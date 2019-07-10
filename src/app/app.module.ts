@@ -10,6 +10,7 @@ import { DropdownWrapperComponent } from './dropdown-wrapper/dropdown-wrapper.co
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TestResolveComponent } from './test-resolve/test-resolve.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     DropdownWrapperComponent,
     LoginComponent,
     AdminComponent,
+    TestResolveComponent,
   ],
   imports: [
     BrowserModule,
