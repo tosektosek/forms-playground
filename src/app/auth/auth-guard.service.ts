@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Router, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuardService implements CanActivate, CanActivateChild {
+export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad {
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log('canActivateChild')
 
+    // FAJNE
     this.router.navigate([route.parent.routeConfig.path]);
     return false;
   }
@@ -21,5 +22,9 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
       return false;
     }
     return true;
+  }
+
+  canLoad() {
+    return false;
   }
 }

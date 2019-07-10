@@ -34,6 +34,12 @@ const routes: Routes = [
     data: { expectedRole: 'admin' },
     children: [{ path: 'test', component: MyFormComponent }],
   },
+  {
+    path: 'lazy-test',
+    loadChildren: './lazy-test/lazy-test.module#LazyTestModule',
+    canLoad: [AuthGuardService]
+    // canActivate: [AuthGuardService]
+  },
   { path: '**', redirectTo: '/forms' },
 ];
 

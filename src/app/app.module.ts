@@ -18,7 +18,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     CustomDropdownComponent,
     DropdownWrapperComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
