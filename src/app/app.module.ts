@@ -14,6 +14,7 @@ import { TestResolveComponent } from './test-resolve/test-resolve.component';
 import { TestHttpInterceptorComponent } from './test-http-interceptor/test-http-interceptor.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { ThisComponent } from './this/this.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     AdminComponent,
     TestResolveComponent,
     TestHttpInterceptorComponent,
+    ThisComponent,
   ],
   imports: [
     BrowserModule,

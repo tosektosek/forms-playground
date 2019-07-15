@@ -11,6 +11,7 @@ import { DeactivationGuardService } from './deactivation-guard.service';
 import { TestResolveComponent } from './test-resolve/test-resolve.component';
 import { MyResolverService } from './my-resolver.service';
 import { TestHttpInterceptorComponent } from './test-http-interceptor/test-http-interceptor.component';
+import { ThisComponent } from './this/this.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'interceptor',
     component: TestHttpInterceptorComponent
+  },
+  {
+    path: 'this',
+    component: ThisComponent
   },
   { path: '**', redirectTo: '/forms' },
 ];
