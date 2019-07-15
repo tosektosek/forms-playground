@@ -10,6 +10,7 @@ import { RoleGuardService } from './auth/role-guard.service';
 import { DeactivationGuardService } from './deactivation-guard.service';
 import { TestResolveComponent } from './test-resolve/test-resolve.component';
 import { MyResolverService } from './my-resolver.service';
+import { TestHttpInterceptorComponent } from './test-http-interceptor/test-http-interceptor.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
@@ -46,6 +47,10 @@ const routes: Routes = [
     path: 'resolve',
     component: TestResolveComponent,
     resolve: { data: MyResolverService }
+  },
+  {
+    path: 'interceptor',
+    component: TestHttpInterceptorComponent
   },
   { path: '**', redirectTo: '/forms' },
 ];

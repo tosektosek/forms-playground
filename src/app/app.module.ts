@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TestResolveComponent } from './test-resolve/test-resolve.component';
+import { TestHttpInterceptorComponent } from './test-http-interceptor/test-http-interceptor.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,22 @@ import { TestResolveComponent } from './test-resolve/test-resolve.component';
     LoginComponent,
     AdminComponent,
     TestResolveComponent,
+    TestHttpInterceptorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    JwtModule.forRoot({}),
+    HttpClientModule,
+    // JwtModule.forRoot({}),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
