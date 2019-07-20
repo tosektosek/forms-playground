@@ -15,6 +15,8 @@ import { TestHttpInterceptorComponent } from './test-http-interceptor/test-http-
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ThisComponent } from './this/this.component';
+import { HooksComponent } from './hooks/hooks.component';
+import { YetMoreHooksComponent } from './hooks/yet-more-hooks/yet-more-hooks.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { ThisComponent } from './this/this.component';
     TestResolveComponent,
     TestHttpInterceptorComponent,
     ThisComponent,
+    HooksComponent,
+    YetMoreHooksComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // JwtModule.forRoot({}),
+    JwtModule.forRoot({}),
   ],
   providers: [
     {

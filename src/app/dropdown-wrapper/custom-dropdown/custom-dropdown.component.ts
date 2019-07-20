@@ -17,6 +17,9 @@ export class CustomDropdownComponent implements ControlValueAccessor {
   @Input() products;
   isListVisible: boolean;
 
+  constructor() {
+    console.log(this.products)
+  }
   value: any;
   propagateChange: any = () => {};
 

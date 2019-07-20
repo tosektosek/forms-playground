@@ -12,6 +12,7 @@ import { TestResolveComponent } from './test-resolve/test-resolve.component';
 import { MyResolverService } from './my-resolver.service';
 import { TestHttpInterceptorComponent } from './test-http-interceptor/test-http-interceptor.component';
 import { ThisComponent } from './this/this.component';
+import { HooksComponent } from './hooks/hooks.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
@@ -57,11 +58,13 @@ const routes: Routes = [
     path: 'this',
     component: ThisComponent
   },
+  { path: 'hooks', component: HooksComponent},
+
   { path: '**', redirectTo: '/forms' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+exports: [RouterModule],
 })
 export class AppRoutingModule {}
