@@ -13,6 +13,8 @@ import { MyResolverService } from './my-resolver.service';
 import { TestHttpInterceptorComponent } from './test-http-interceptor/test-http-interceptor.component';
 import { ThisComponent } from './this/this.component';
 import { HooksComponent } from './hooks/hooks.component';
+import { AsyncAwaitComponent } from './async-await/async-await.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
@@ -42,29 +44,30 @@ const routes: Routes = [
   {
     path: 'lazy-test',
     loadChildren: './lazy-test/lazy-test.module#LazyTestModule',
-    canLoad: [AuthGuardService]
+    canLoad: [AuthGuardService],
     // canActivate: [AuthGuardService]
   },
   {
     path: 'resolve',
     component: TestResolveComponent,
-    resolve: { data: MyResolverService }
+    resolve: { data: MyResolverService },
   },
   {
     path: 'interceptor',
-    component: TestHttpInterceptorComponent
+    component: TestHttpInterceptorComponent,
   },
   {
     path: 'this',
-    component: ThisComponent
+    component: ThisComponent,
   },
-  { path: 'hooks', component: HooksComponent},
-
+  { path: 'hooks', component: HooksComponent },
+  { path: 'async', component: AsyncAwaitComponent },
+  { path: 'rxjs', component: RxjsComponent },
   { path: '**', redirectTo: '/forms' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -11,6 +11,8 @@ import {
   OnChanges,
   SimpleChanges,
   ChangeDetectionStrategy,
+  ViewChild,
+  ChangeDetectorRef,
 } from '@angular/core';
 // IMPORTANT! Implementing ngDoCheck and ngOnChanges is a bad practice
 // tslint:disable-next-line: no-conflicting-lifecycle
@@ -31,11 +33,13 @@ export class YetMoreHooksComponent
     AfterViewChecked,
     OnDestroy {
   @Input() data: any;
+  @ViewChild('myChild', {static: true}) myChild;
   someValue = { abc: 'abc' };
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(this.myChild)
     console.log('NgOnChanges called');
-    console.log(changes);
+    // console.log(changes);
   }
 
   //  ====================================================================================
@@ -45,10 +49,15 @@ export class YetMoreHooksComponent
   // So you should use constructor() to setup Dependency Injection and not much else.
   // ngOnInit() is better place to "start" - it's where/when components' bindings are resolved.
   ngOnInit() {
-    console.log(`You can see @Input: ${this.data}`);
+    console.log(this.myChild)
+    // console.log(`You can see @Input: ${this.data}`);
   }
-  constructor() {
-    console.log(`You can't see @Input: ${this.data}`);
+  constructor(public cdr: ChangeDetectorRef) {
+    this.cdr.detach();
+    this.cdr.detach();
+    console.log(this.myChild)
+
+    // console.log(`You can't see @Input: ${this.data}`);
   }
 
   // ====================================================================================
@@ -58,7 +67,9 @@ export class YetMoreHooksComponent
 
   // ====================================================================================
   ngAfterContentInit(): void {
-    console.log('ngAfterContentInit');
+    console.log(this.myChild)
+
+    // console.log('ngAfterContentInit');
     setTimeout(() => {
       this.data = 'fdfdf';
       this.data = new String();
@@ -68,16 +79,19 @@ export class YetMoreHooksComponent
     console.log('ngAfterContentChecked');
   }
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
+    console.log(this.myChild)
+
+    // console.log('ngAfterViewInit');
   }
   ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked');
+    // console.log('ngAfterViewChecked');
   }
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
+    // console.log('ngOnDestroy');
   }
 
   changeValue() {
     this.someValue = { ...this.someValue, abc: 'cba' };
+    this.cdr.markForCheck();
   }
 }

@@ -17,6 +17,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { ThisComponent } from './this/this.component';
 import { HooksComponent } from './hooks/hooks.component';
 import { YetMoreHooksComponent } from './hooks/yet-more-hooks/yet-more-hooks.component';
+import { AsyncAwaitComponent } from './async-await/async-await.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,15 @@ import { YetMoreHooksComponent } from './hooks/yet-more-hooks/yet-more-hooks.com
     ThisComponent,
     HooksComponent,
     YetMoreHooksComponent,
+    AsyncAwaitComponent,
+    RxjsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    JwtModule.forRoot({}),
+    // JwtModule.forRoot({}),
   ],
   providers: [
     {
