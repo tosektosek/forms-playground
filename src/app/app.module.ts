@@ -19,6 +19,7 @@ import { HooksComponent } from './hooks/hooks.component';
 import { YetMoreHooksComponent } from './hooks/yet-more-hooks/yet-more-hooks.component';
 import { AsyncAwaitComponent } from './async-await/async-await.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { InPipe1Component } from './rxjs/in-pipe1/in-pipe1.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     YetMoreHooksComponent,
     AsyncAwaitComponent,
     RxjsComponent,
+    InPipe1Component,
   ],
   imports: [
     BrowserModule,

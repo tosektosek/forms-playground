@@ -15,18 +15,19 @@ import { ThisComponent } from './this/this.component';
 import { HooksComponent } from './hooks/hooks.component';
 import { AsyncAwaitComponent } from './async-await/async-await.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { InPipe1Component } from './rxjs/in-pipe1/in-pipe1.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/forms', pathMatch: 'full' },
   {
     path: 'forms',
     component: MyFormComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'cva',
     component: DropdownWrapperComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'login',
@@ -36,15 +37,15 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [RoleGuardService],
-    canActivateChild: [AuthGuardService],
+    // canActivate: [RoleGuardService],
+    // canActivateChild: [AuthGuardService],
     data: { expectedRole: 'admin' },
     children: [{ path: 'test', component: MyFormComponent }],
   },
   {
     path: 'lazy-test',
     loadChildren: './lazy-test/lazy-test.module#LazyTestModule',
-    canLoad: [AuthGuardService],
+    // canLoad: [AuthGuardService],
     // canActivate: [AuthGuardService]
   },
   {
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'hooks', component: HooksComponent },
   { path: 'async', component: AsyncAwaitComponent },
   { path: 'rxjs', component: RxjsComponent },
+  { path: 'rxjs-pipes1', component: InPipe1Component },
   { path: '**', redirectTo: '/forms' },
 ];
 

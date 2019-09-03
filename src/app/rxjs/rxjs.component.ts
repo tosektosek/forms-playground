@@ -20,6 +20,7 @@ import {
   zip,
   combineLatest,
 } from 'rxjs';
+import { BeerService } from './beer.service';
 
 @Component({
   selector: 'app-rxjs',
@@ -29,10 +30,10 @@ import {
 export class RxjsComponent implements OnInit, OnDestroy {
   destroy$ = new Subject();
 
-  constructor(private http: HttpClient) {}
+  constructor(private beerService: BeerService) {}
 
   async ngOnInit() {
-    this.getSomeData(11, 0)
+    this.beerService.getSomeData(11, 0)
       .pipe(
         tap(val => {
           return 'It is ignored';
@@ -64,7 +65,7 @@ export class RxjsComponent implements OnInit, OnDestroy {
     //   .subscribe(console.log);
 
     // same with async
-    // const beers = (await this.getSomeData(11, 0).toPromise()) as Array<any>;
+    // const beers = (await this.beerService.getSomeData(11, 0).toPromise()) as Array<any>;
     // beers
     //   .filter((beer: any) => beer.length > 10)
     //   .map((beer: any) => ({ ...beer, name: `${beer.name} hohoho` }));
@@ -75,17 +76,7 @@ export class RxjsComponent implements OnInit, OnDestroy {
 
     // console.log(abc);
 
-    // this.getSomeDataWithError().subscribe();
-  }
-
-  getSomeData(perPage, d) {
-    return this.http
-      .get(`${url}/beers?page=1&per_page=${perPage}`)
-      .pipe(delay(d));
-  }
-
-  getSomeDataWithError() {
-    return this.http.get(`${url}/beersxxdxd`);
+    // this.beerService.getSomeDataWithError().subscribe();
   }
 
   somePipes() {
@@ -103,9 +94,9 @@ export class RxjsComponent implements OnInit, OnDestroy {
   // it's final destination operator
   fork() {
     forkJoin(
-      this.getSomeData(1, 500),
-      this.getSomeData(2, 0),
-      this.getSomeData(3, 300),
+      this.beerService.getSomeData(1, 500),
+      this.beerService.getSomeData(2, 0),
+      this.beerService.getSomeData(3, 300),
     )
       .pipe(
         tap(val => {
@@ -118,9 +109,9 @@ export class RxjsComponent implements OnInit, OnDestroy {
   // zip waits until all observables emits data
   rxjsZip() {
     zip(
-      this.getSomeData(1, 500),
-      this.getSomeData(2, 0),
-      this.getSomeData(3, 300),
+      this.beerService.getSomeData(1, 500),
+      this.beerService.getSomeData(2, 0),
+      this.beerService.getSomeData(3, 300),
     )
       .pipe(tap(val => console.log(val)))
       .subscribe(console.log);
@@ -128,9 +119,9 @@ export class RxjsComponent implements OnInit, OnDestroy {
 
   rxjsCombineLatest() {
     combineLatest(
-      this.getSomeData(1, 500),
-      this.getSomeData(2, 0),
-      this.getSomeData(3, 300),
+      this.beerService.getSomeData(1, 500),
+      this.beerService.getSomeData(2, 0),
+      this.beerService.getSomeData(3, 300),
     )
       .pipe(tap(val => console.log(val)))
       .subscribe(console.log);
@@ -141,5 +132,3 @@ export class RxjsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 }
-
-const url = 'https://api.punkapi.com/v2';
